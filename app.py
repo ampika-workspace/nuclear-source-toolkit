@@ -29,6 +29,9 @@ st.markdown("""
     box-shadow: 0 1px 6px rgba(0,0,0,0.06);
     transition: box-shadow 0.2s ease;
     margin-bottom: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
 }
 .tool-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.13); }
 .coming-soon-card {
@@ -43,12 +46,16 @@ st.markdown("""
     border-radius: 12px;
     padding: 22px 24px 18px;
     margin-bottom: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
 }
 .card-icon  { font-size: 2rem; margin-bottom: 10px; line-height: 1; }
-.card-title { font-size: 1.1rem; font-weight: 700; color: var(--text-color, #1e293b); margin-bottom: 6px; }
+.card-title { font-size: 1.1rem; font-weight: 700; color: var(--text-color, #1e293b); margin-bottom: 6px;
+              word-break: break-word; }
 .card-desc  { font-size: 0.88rem; color: var(--text-color, #64748b); opacity: 0.75;
-              line-height: 1.55; margin-bottom: 14px; }
-.card-tags  { display: flex; flex-wrap: wrap; gap: 5px; }
+              line-height: 1.55; margin-bottom: 14px; word-break: break-word; }
+.card-tags  { display: flex; flex-wrap: wrap; gap: 5px; overflow: hidden; }
 .tag {
     background: rgba(37,99,235,0.1);
     color: #2563eb;
@@ -145,7 +152,7 @@ def tool_card(icon: str, title: str, desc: str, tags: list[str], page_path: str 
         href = _page_slug(page_path)
         return (
             f'<a href="{href}" target="_self" '
-            f'style="text-decoration:none;display:block;color:inherit;">'
+            f'style="text-decoration:none;display:block;color:inherit;width:100%;max-width:100%;overflow:hidden;">'
             f'{inner}</a>'
         )
     return inner
